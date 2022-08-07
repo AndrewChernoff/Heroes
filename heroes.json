@@ -1,0 +1,29 @@
+{
+  "heroes": [
+    {
+      "id": "id14",
+      "name": "Hank Pym",
+      "description": "Smt",
+      "element": "water"
+    },
+    {
+      "id": "id26",
+      "name": "Hammerhead",
+      "description": "WTF",
+      "element": "fire"
+    },
+    {
+      "id": "id78",
+      "name": "Andrew",
+      "description": "Something",
+      "element": "earth"
+    }
+  ],
+  "filters": [
+    "all",
+    "fire",
+    "water",
+    "wind",
+    "earth"
+  ]
+}
