@@ -28,8 +28,7 @@ const reducer = (state = initialState, action) => {
     case "DELETE_HERO":
       return {
         ...state,
-        //heroes: state.heroes.filter((el) => el.id !== action.payload),
-        filteredHeroes: [...state.filteredHeroes].filter((el) => el.id !== action.payload) ////here
+        filteredHeroes: [...state.filteredHeroes].filter((el) => el.id !== action.payload)
       };
     case "ADD_HERO":
       return {
