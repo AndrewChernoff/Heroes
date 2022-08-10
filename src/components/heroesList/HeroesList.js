@@ -14,13 +14,17 @@ import Spinner from "../spinner/Spinner";
 import { deleteHeroAC } from "../../reducers";
 import { useCallback } from "react";
 
-// Задача для этого компонента:
-// При клике на "крестик" идет удаление персонажа из общего состояния
-// Усложненная задача:
-// Удаление идет и с json файла при помощи метода DELETE
-
 const HeroesList = () => {
-  const { filteredHeroes, heroesLoadingStatus } = useSelector((state) => state);
+  //const { filteredHeroes } = useSelector((state) => state.heroes); 
+ const filteredHeroes = useSelector((state) => {
+  if (state.filter.filter === 'all') {
+    return state.heroes.filteredHeroes
+  } else {
+    return state.heroes.filteredHeroes.filter(el => el.element === state.filter.filter) 
+  }
+ }
+    ); 
+  const heroesLoadingStatus = useSelector((state) => state.heroes.heroesLoadingStatus);
   const dispatch = useDispatch();
   const { request } = useHttp();
 
@@ -32,11 +36,6 @@ const HeroesList = () => {
 
     // eslint-disable-next-line
   }, []);
-
-  /* const deleteItem = (id) => {
-        request("http://localhost:3001/heroes/" + id, "DELETE")
-        .then( () => dispatch(deleteHeroAC(id)))
-    } */
 
   const deleteItem = useCallback((id) => {
     request("http://localhost:3001/heroes/" + id, "DELETE").then(() =>
@@ -54,10 +53,6 @@ const HeroesList = () => {
     if (arr.length === 0) {
       return <h5 className="text-center mt-5">Героев пока нет</h5>;
     }
-
-    /* return arr.map(({id, ...props}) => {
-            return <HeroesListItem key={id} onItemClick={() => deleteItem(id)} {...props}/>
-        }) */
 
     return (
       <TransitionGroup>
