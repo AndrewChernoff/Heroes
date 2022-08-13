@@ -25,7 +25,6 @@ const HeroesAddForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [element, setElement] = useState('Я владею элементом...');
-    const [btnStatus, setBtnStatus] = useState(true);
 
     const postItem = (e) => {
      e.preventDefault();     

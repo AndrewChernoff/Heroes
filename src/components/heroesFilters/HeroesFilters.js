@@ -3,7 +3,7 @@ import { filterHeroes } from '../../reducers/filterReducer';
 
 const HeroesFilters = () => {
 
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const buttons = [
     { name: "Все", dataElement: "all", class: "btn btn-outline-dark active" },

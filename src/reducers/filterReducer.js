@@ -10,10 +10,7 @@ const filter = (state=initialState, action) => {
         case "FILTER_HEROS":
           return {
             ...state,
-            filter: action.payload,
-    
-            /* filteredHeroes: state.filter === 'all'? [...state.heroes] 
-            :  [...state.heroes.filter(el => el.element === state.filter)]  */ /// to list component
+            filter: action.payload
           };
         default:
           return state;

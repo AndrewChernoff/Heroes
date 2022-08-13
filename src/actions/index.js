@@ -9,10 +9,18 @@ export const heroesFetched = (heroes) => {
         type: 'HEROES_FETCHED',
         payload: heroes
     }
-}
+} 
 
 export const heroesFetchingError = () => {
     return {
         type: 'HEROES_FETCHING_ERROR'
     }
 }
+
+
+export const fetchHeroes = (request) =>  (dispatch) => { ////thunk
+    dispatch(heroesFetching());
+    request("http://localhost:3001/heroes")
+      .then((data) => dispatch(heroesFetched(data)))
+      .catch(() => dispatch(heroesFetchingError()));
+  }

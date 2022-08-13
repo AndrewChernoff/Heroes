@@ -1,8 +1,6 @@
 const initialState = {
   heroes: [],
   heroesLoadingStatus: "idle",
- /*  filters: [],
-  filter: 'all', */
   filteredHeroes: []
 };
 
@@ -35,14 +33,7 @@ const heroes = (state = initialState, action) => {
         ...state,
         filteredHeroes: [...state.filteredHeroes, action.payload],
         };
-    /* case "FILTER_HEROS":
-      return {
-        ...state,
-        filter: action.payload,
-
-        filteredHeroes: state.filter === 'all'? [...state.heroes] 
-        :  [...state.heroes.filter(el => el.element === state.filter)] 
-      }; */
+    
     default:
       return state;
   }
@@ -50,6 +41,6 @@ const heroes = (state = initialState, action) => {
 
 export const deleteHeroAC = (userId) => ({ type: "DELETE_HERO", payload: userId });
 export const addHeroAC = (item) => ({ type: "ADD_HERO", payload: item });
-/* export const filterHeroes = (element) => ({ type: "FILTER_HEROS", payload: element });
- */
+
+
 export default heroes;
