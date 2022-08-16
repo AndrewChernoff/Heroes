@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterHeroes } from '../../reducers/filterReducer';
+import { filterHeroesAC } from './../../actions/index';
 
 const HeroesFilters = () => {
 
@@ -24,7 +24,7 @@ const HeroesFilters = () => {
                 key={el.dataElement}
                 data-element={el.dataElement}
                 className={el.class}
-                onClick={()=> dispatch(filterHeroes(el.dataElement))}
+                onClick={()=> dispatch(filterHeroesAC(el.dataElement))}
               >
                 {el.name}
               </button>

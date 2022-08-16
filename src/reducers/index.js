@@ -21,7 +21,7 @@ const heroes = createReducer(initialState, (builder) => {
     .addCase(heroesFetchingError, (state) => {
       state.heroesLoadingStatus = "error";
     })
-    .addCase(deleteHeroAC, (state, action) => { ////bug
+    .addCase(deleteHeroAC, (state, action) => {
       state.filteredHeroes = state.filteredHeroes.filter((el) => el.id !== action.payload);
       state.heroes = state.heroes.filter((el) => el.id !== action.payload);
     })

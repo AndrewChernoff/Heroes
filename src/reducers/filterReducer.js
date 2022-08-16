@@ -1,3 +1,5 @@
+import { createReducer } from "@reduxjs/toolkit"
+import { filterHeroesAC } from "../actions"
 
 let initialState = {
     filters: [],
@@ -5,7 +7,7 @@ let initialState = {
     //filteredHeroes: []
 }
 
-const filter = (state=initialState, action) => {
+/* const filter = (state=initialState, action) => {
     switch (action.type) {
         case "FILTER_HEROS":
           return {
@@ -15,9 +17,16 @@ const filter = (state=initialState, action) => {
         default:
           return state;
       }
-}
+} */
 
-export const filterHeroes = (element) => ({ type: "FILTER_HEROS", payload: element });
+const filter = createReducer(initialState, (builder) => {
+  builder
+    .addCase(filterHeroesAC, (state, action) => {
+      state.filter = action.payload
+    })
+    .addDefaultCase((state,) => {state.filter = 'all'})
+})
+//export const filterHeroes = (element) => ({ type: "FILTER_HEROS", payload: element });
 
 
 export default filter;
