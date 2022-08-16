@@ -14,7 +14,7 @@ import { useState } from "react";
 import nextId from "react-id-generator";
 import { useHttp } from "../../hooks/http.hook";
 import { useDispatch } from 'react-redux';
-import { addHeroAC } from "../../reducers";
+import { addHeroAC } from "../../actions";
 
 const HeroesAddForm = () => {
 

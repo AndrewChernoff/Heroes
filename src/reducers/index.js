@@ -1,10 +1,37 @@
+import { createReducer } from "@reduxjs/toolkit";
+import { addHeroAC, deleteHeroAC, heroesFetched, heroesFetching, heroesFetchingError } from "../actions";
+
 const initialState = {
   heroes: [],
   heroesLoadingStatus: "idle",
   filteredHeroes: []
 };
 
-const heroes = (state = initialState, action) => {
+
+const heroes = createReducer(initialState, (builder) => {
+  builder
+    .addCase(heroesFetching, (state) => {
+      state.heroesLoadingStatus = "loading"
+    })
+    .addCase(heroesFetched, (state, action) => {
+      state.heroes = action.payload;
+      state.filteredHeroes = action.payload;
+      state.heroesLoadingStatus = "idle";
+    })
+    .addCase(heroesFetchingError, (state) => {
+      state.heroesLoadingStatus = "error";
+    })
+    .addCase(deleteHeroAC, (state, action) => { ////bug
+      state.filteredHeroes = state.filteredHeroes.filter((el) => el.id !== action.payload);
+      state.heroes = state.heroes.filter((el) => el.id !== action.payload);
+    })
+    .addCase(addHeroAC, (state, action) => {
+      state.filteredHeroes.push(action.payload);
+      state.heroes.push(action.payload);
+    })
+})
+
+/* const heroes = (state = initialState, action) => {
   switch (action.type) {
     case "HEROES_FETCHING":
       return {
@@ -26,21 +53,19 @@ const heroes = (state = initialState, action) => {
     case "DELETE_HERO":
       return {
         ...state,
-        filteredHeroes: [...state.filteredHeroes].filter((el) => el.id !== action.payload)
+        filteredHeroes: [...state.filteredHeroes].filter((el) => el.id !== action.payload),
+        heroes: [...state.heroes].filter((el) => el.id !== action.payload)
       };
     case "ADD_HERO":
       return {
         ...state,
         filteredHeroes: [...state.filteredHeroes, action.payload],
+        heroes: [...state.heroes, action.payload]////
         };
     
     default:
       return state;
   }
-};
-
-export const deleteHeroAC = (userId) => ({ type: "DELETE_HERO", payload: userId });
-export const addHeroAC = (item) => ({ type: "ADD_HERO", payload: item });
-
+}; */
 
 export default heroes;
