@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import "./HeroesList.scss";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { deleteHeroAC, fetchHeroes } from "../../actions";
+import { deleteHeroAC } from "../../reducers/index";
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from "../spinner/Spinner";
 import { useCallback } from "react";
+import { fetchHeroes } from "../../actions";
 
 const HeroesList = () => {
   const filteredHeroes = useSelector((state) => {

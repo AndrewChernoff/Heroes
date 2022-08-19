@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterHeroesAC } from './../../actions/index';
+import { filterHeroesAC } from './../../reducers/filterReducer';
 
 const HeroesFilters = () => {
 
